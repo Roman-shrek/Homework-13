@@ -1,0 +1,58 @@
+import java.util.Objects;
+
+public class Book {
+    private String titleBook;
+    private Author author;
+    private int datePublication;
+
+    public Book(String titleBook, Author author, int datePublication) {
+        this.titleBook = titleBook;
+        this.author = author;
+        this.datePublication = datePublication;
+    }
+
+    public Book(String titleBook, Author author) {
+        this(titleBook, author, 0);
+    }
+
+    public String getTitleBook() {
+        return this.titleBook;
+
+    }
+
+    public Author getAuthor() {
+        return this.author;
+    }
+
+    public int getDatePublication() {
+        return this.datePublication;
+    }
+
+    public void setDatePublication(int datePublication) {
+        this.datePublication = datePublication;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this.getClass() != object.getClass()) {
+            return false;
+        }
+        Book book = (Book) object;
+        return titleBook.equals(book.titleBook) && author.equals(book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(titleBook);
+    }
+
+    @Override
+    public String toString() {
+        if (datePublication != 0) {
+            return "Книга: " + getTitleBook() + "." + " Автор: " + author + "." + " Опубликована в " +
+                    +getDatePublication();
+        } else {
+            return "Книга: " + getTitleBook() + ". Автор: " + author;
+        }
+    }
+}
