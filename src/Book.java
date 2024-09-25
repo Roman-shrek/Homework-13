@@ -9,8 +9,8 @@ public class Book {
         this.titleBook = titleBook;
         this.author = author;
         this.datePublication = datePublication;
-    }
 
+    }
     public Book(String titleBook, Author author) {
         this(titleBook, author, 0);
     }
@@ -34,16 +34,16 @@ public class Book {
 
     @Override
     public boolean equals(Object object) {
-        if (this.getClass() != object.getClass()) {
-            return false;
-        }
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
         Book book = (Book) object;
-        return titleBook.equals(book.titleBook) && author.equals(book.author);
+        return datePublication == book.datePublication && Objects.equals(titleBook, book.titleBook)
+                && Objects.equals(author, book.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(titleBook);
+        return Objects.hash(titleBook, author, datePublication);
     }
 
     @Override

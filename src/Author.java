@@ -20,16 +20,15 @@ public class Author {
 
     @Override
     public boolean equals(Object object) {
-        if (this.getClass() != object.getClass()) {
-            return false;
-        }
-        Author name = (Author) object;
-        return firsName.equals(name.firsName) || lastName.equals(name.firsName);
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Author author = (Author) object;
+        return Objects.equals(firsName, author.firsName) && Objects.equals(lastName, author.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(firsName);
+        return Objects.hash(firsName, lastName);
     }
 
     @Override
